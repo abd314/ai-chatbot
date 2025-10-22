@@ -1,5 +1,10 @@
 # render.yaml
 services:
+  - type: redis
+    name: ai-redis
+    region: oregon
+    ipAllowList: []
+
   - type: web
     name: ai-chatbot
     runtime: docker
@@ -16,13 +21,7 @@ services:
           type: redis
           property: port
       - key: GROQ_API_KEY
-        sync: false  # set this manually in Render dashboard
+        sync: false  # You'll set this manually in the Render dashboard
       - key: CACHE_TTL
         value: "600"
-    healthCheckPath: /docs  # FastAPI Swagger UI
-
-databases:
-  - name: ai-redis
-    type: redis
-    region: oregon
-    ipAllowList: []  # Keep internal
+    healthCheckPath: /docs
