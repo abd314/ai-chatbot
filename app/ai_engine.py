@@ -7,10 +7,10 @@ load_dotenv()
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-def generate_ai_response(query: str, model: str = "llama3-8b-8192") -> str:
+def generate_ai_response(query: str, model: str = "llama-3.3-70b-versatile") -> str:
     """
     Calls Groq Cloud API to generate a response using the specified model.
-    Default model: llama3-8b-8192 (fast and free tier eligible)
+    Default model: llama-3.3-70b-versatile
     """
     try:
         chat_completion = client.chat.completions.create(
